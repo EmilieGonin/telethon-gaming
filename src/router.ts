@@ -14,7 +14,7 @@ export const router = createRouter({
     { path: '/infos', name: 'infos', component: Infos },
     { path: '/contact', name: 'contact', component: Contact },
   ],
-  scrollBehavior(to, from, saved) {
+  scrollBehavior(to, _from, saved) {
     if (saved) return saved
     if (to.hash) {
       const el = document.querySelector(to.hash) as HTMLElement | null
