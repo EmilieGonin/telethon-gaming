@@ -1,47 +1,87 @@
 <template>
   <header class="hdr">
-    <div class="container wrap">
-      <RouterLink class="brand" :to="{ name:'home' }">Téléthon Gaming</RouterLink>
+    <div class="container row">
 
-      <nav :class="['nav', { open }]">
-        <!-- ancres de la vitrine -->
+      <!-- LOGO -->
+      <div class="logo">
+        <img src="/src/assets/logo-placeholder.png" alt="Téléthon Gaming" />
+      </div>
+
+      <!-- NAV -->
+      <nav class="nav">
+        <RouterLink :to="{ path:'/' }">Accueil</RouterLink>
         <RouterLink :to="{ path:'/', hash:'#programme' }">Programme</RouterLink>
         <RouterLink :to="{ path:'/', hash:'#streamers' }">Streamers</RouterLink>
         <RouterLink :to="{ path:'/', hash:'#partenaires' }">Partenaires</RouterLink>
         <RouterLink :to="{ path:'/', hash:'#asso' }">Notre asso</RouterLink>
         <RouterLink :to="{ path:'/', hash:'#clips' }">Clips</RouterLink>
-        <!-- pages dédiées (mobile) -->
-        <RouterLink :to="{ name:'infos' }">Infos</RouterLink>
-        <RouterLink :to="{ name:'contact' }">Contact</RouterLink>
       </nav>
 
-      <button class="burger" @click="open=!open" aria-label="Menu">
-        <span/><span/><span/>
-      </button>
+      <!-- SOCIAL -->
+      <div class="social">
+        <a href="#"><img src="/src/assets/placeholder.png" alt="Twitch" /></a>
+        <a href="#"><img src="/src/assets/placeholder.png" alt="YouTube" /></a>
+        <a href="#"><img src="/src/assets/placeholder.png" alt="Instagram" /></a>
+        <a href="#"><img src="/src/assets/placeholder.png" alt="Facebook" /></a>
+        <a href="#"><img src="/src/assets/placeholder.png" alt="TikTok" /></a>
+        <a href="#"><img src="/src/assets/placeholder.png" alt="X" /></a>
+        <a href="#"><img src="/src/assets/placeholder.png" alt="LinkedIn" /></a>
+      </div>
+
     </div>
   </header>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-const open = ref(false)
+import { RouterLink } from 'vue-router'
 </script>
 
 <style scoped lang="scss">
-.hdr { position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid var(--line); }
-.wrap { display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.75rem 0; }
-.brand { font-weight: 800; text-decoration: none; color: var(--text); }
-.nav { display:flex; gap:.75rem;
-  a{ text-decoration:none; color:#222; padding:.5rem .6rem; border-radius:.5rem; }
+.hdr {
+  background: #150E2A; /* violet très foncé */
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
-.burger{ display:none; background:transparent; border:0; padding:.5rem;
-  span{display:block;width:22px;height:2px;background:#111;margin:4px 0;border-radius:2px;}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-@media (max-width:900px){
-  .nav{ position:absolute; left:0; right:0; top:56px; background:#fff; border-bottom:1px solid var(--line);
-    padding:.75rem 1rem; flex-direction:column; align-items:flex-start; display:none;
-    &.open{ display:flex; }
-  }
-  .burger{ display:block; }
+
+.logo img {
+  height: 48px; /* Ajustable selon ton logo */
+  display: block;
+}
+
+.nav {
+  display: flex;
+  gap: 2rem; /* espacement large comme la maquette */
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700; /* texte épaissi */
+  font-size: 1.05rem;
+}
+
+.nav a.router-link-active {
+  text-decoration: underline;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.social img {
+  height: 22px;
+  width: 22px;
+  filter: brightness(0) saturate(100%) invert(91%) sepia(81%) saturate(3454%) hue-rotate(7deg) brightness(104%) contrast(105%);
+  /* → transforme icône blanche/noire en jaune Téléthon (#FFD100) */
 }
 </style>
