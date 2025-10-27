@@ -1,0 +1,10 @@
+:root {
+  --container: 1200px;
+  --space-1: .5rem; --space-2: .75rem; --space-3: 1rem; --space-4: 1.5rem; --space-6: 2rem;
+  --radius: .75rem;
+  --bg: #fff; --text: #111; --muted: #555; --line: #eee;
+}
+* { box-sizing: border-box; }
+html, body, #app { height: 100%; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: var(--text); background: var(--bg); }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 1rem; }
